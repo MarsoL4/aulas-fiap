@@ -1,0 +1,2 @@
+from .investimentos import converter_taxa_anual_para_mensal, calcular_cagr, calcular_juros_compostos
+calcular_juros_compostos, converter_taxa_anual_para_mensal, calcular_cagr
