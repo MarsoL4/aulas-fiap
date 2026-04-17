@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "AulaAuth",
+    "slug": "AulaAuth",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "scheme": "AulaAuth",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}

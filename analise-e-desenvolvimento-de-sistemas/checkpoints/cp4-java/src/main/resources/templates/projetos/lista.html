@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Projetos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+<div th:insert="~{fragments/header :: header}">
+    MENU NO HEADER
+</div>
+<div class="container mx-auto">
+
+    <h1 class="text-3xl font-bold mb-6 text-center">Lista de Projetos</h1>
+
+    <div class="text-center mt-8">
+        <a th:href="@{/projetos/novo}" class="text-blue-600 font-semibold hover:underline">Novo Projeto</a>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md mt-4">
+        <table class="w-full border-collapse">
+            <thead>
+            <tr class="bg-blue-600 text-white">
+                <th class="p-3 text-left">ID</th>
+                <th class="p-3 text-left">Nome</th>
+                <th class="p-3 text-left">Responsável</th>
+                <th class="p-3 text-left">Data de Criação</th>
+                <th class="p-3 text-left">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="border-b" th:each="projeto : ${projetos}">
+                <td class="p-3" th:text="${projeto.id}">ID</td>
+                <td class="p-3" th:text="${projeto.nome}">Nome</td>
+                <td class="p-3" th:text="${projeto.responsavel}">Responsável</td>
+                <td class="p-3" th:text="${#dates.format(projeto.dataCriacao, 'dd/MM/yyyy HH:mm')}">Data</td>
+                <td class="p-3">
+                    <a class="text-blue-600 hover:underline" th:href="@{/projetos/editar/{id}(id=${projeto.id})}">Editar</a>
+                    <a class="text-blue-600 hover:underline" th:href="@{/projetos/deletar/{id}(id=${projeto.id})}">Deletar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div th:replace="~{fragments/footer :: footer}">
+    &copy; 2025 TEXTO FOOTER
+</div>
+</body>
+</html>

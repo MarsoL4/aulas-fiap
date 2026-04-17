@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Recursos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hamburger {
+            transition: transform 0.3s ease;
+        }
+        .hamburger.active {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+<div th:insert="~{fragments/header :: header}">
+    MENU NO HEADER
+</div>
+<div class="container mx-auto">
+
+
+    <h1 class="text-3xl font-bold mb-6 text-center" th:text="#{recurso.titulo}">Lista de XXX</h1>
+
+    <div class="text-center mt-8">
+        <a th:href="@{/recursos/novo}" class="text-blue-600 font-semibold hover:underline" th:text="#{recurso.lista.nova}">Novo Recurso</a>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <table bclass="w-full border-collapse">
+            <thead>
+            <tr class="bg-blue-600 text-white">
+                <th class="p-3 text-left" th:text="#{recurso.id}">ID</th>
+                <th class="p-3 text-left" th:text="#{recurso.nome}">Nome</th>
+                <th class="p-3 text-left" th:text="#{recurso.identificacaoLegal}">Identificacao Legal</th>
+                <th class="p-3 text-left" th:text="#{recurso.custoMensal}">Custo Mensal</th>
+                 <th class="p-3 text-left" th:text="#{page.acoes}">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="border-b" th:each="recurso : ${recursos}">
+                <td class="p-3" th:text="${recurso.id}">ID</td>
+                <td class="p-3" th:text="${recurso.nome}">NOME</td>
+                <td class="p-3" th:text="${recurso.identificacaoLegal}">Identificacao Legal</td>
+                <td class="p-3" th:text="${recurso.custoMensal}">Custo Mensal</td>
+                <td class="p-3">
+                    <a class="text-blue-600 hover:underline" th:href="@{/recursos/editar/{id}(id=${recurso.id})}" th:text="#{page.edit}">Editar</a>
+                    <a class="text-blue-600 hover:underline" th:href="@{/recursos/deletar/{id}(id=${recurso.id})}" th:text="#{page.delete}">Deletar</a>
+                </td>
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+<div th:replace="~{fragments/footer :: footer}">
+    &copy; 2025 TEXTO FOOTER
+</div>
+
+
+</body>
+</html>
